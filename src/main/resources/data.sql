@@ -7,3 +7,10 @@ insert into unit_of_measure (description) values ('Tablespoon');
 insert into unit_of_measure (description) values ('Cup');
 insert into unit_of_measure (description) values ('Spoon');
 insert into unit_of_measure (description) values ('Ounce');
+insert into unit_of_measure (description) values ('Pint');
+insert into unit_of_measure (description) values ('Pinch');
+insert into unit_of_measure (description) values ('Each');
+insert into unit_of_measure (description) values ('Dash');
+
+-- insert into recipe (description) values ('Guacamole');
+-- insert into recipe (description) values ('Spicy Grilled Chicken Tacos');

@@ -7,16 +7,15 @@
 <body>
 <h1 th:text="'Spring5 Recipe Index Page'">Spring5 Recipe Index Page</h1>
 
-<p>
-    Yah did didididi didly didly idle eee ioerwer dah DYNAMICALLY CHANGED again qwerqwer
-</p>
-<p>
-<ul>
-    <li>Meat</li>
-    <li>Eggs</li>
-    <li>Bread</li>
-    <li>Coffee</li>
-</ul>
-</p>
+<table>
+    <tr>
+        <td>ID</td>
+        <td>Description</td>
+    </tr>
+    <tr th:each="recipe : ${recipes}">
+        <td th:text="${recipe.id}">999</td>
+        <td th:text="${recipe.description}">Tastee Goodees</td>
+    </tr>
+</table>
 </body>
 </html>

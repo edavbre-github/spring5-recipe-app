@@ -4,7 +4,9 @@ import guru.springframework.domain.Category;
 import guru.springframework.domain.UnitOfMeasure;
 import guru.springframework.repositories.CategoryRepository;
 import guru.springframework.repositories.UnitOfMeasureRepository;
+import guru.springframework.services.RecipeService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Optional;
@@ -17,31 +19,17 @@ import java.util.Optional;
 @Controller
 public class IndexController {
 
-    private CategoryRepository categoryRepository;
-    private UnitOfMeasureRepository unitOfMeasureRepository;
+    private final RecipeService recipeService;
 
-    /**
-     * Using constructor based injection here, and because this class is already marked as a Controller/Component,
-     * Spring will Autowire these in for us.
-     *
-     * @param categoryRepository
-     * @param unitOfMeasureRepository
-     */
-    public IndexController(CategoryRepository categoryRepository, UnitOfMeasureRepository unitOfMeasureRepository) {
-        this.categoryRepository = categoryRepository;
-        this.unitOfMeasureRepository = unitOfMeasureRepository;
+    public IndexController(RecipeService recipeService) {
+        this.recipeService = recipeService;
     }
 
     @RequestMapping({"", "/", "/index", "/index.html"})
-    public String index() {
-        System.out.println("Dummy message fom Dagger zzzzzzzzz");
+    public String getIndexPage(Model model) {
+        //System.out.println("Dummy message fom Dagger zzzzzzzzz");
 
-        // Simple test of our repositories...
-        Optional<Category> optionalCategory = categoryRepository.findByDescription("Mexican");
-        Optional<UnitOfMeasure> optionalUnitOfMeasure = unitOfMeasureRepository.findByDescription("Spoon");
-
-        System.out.println("Category ID: " + optionalCategory.get().getId());
-        System.out.println("UOM ID: " + optionalUnitOfMeasure.get().getId());
+        model.addAttribute("recipes", recipeService.getRecipes());
 
         // Causes Thymeleaf to lookup index.html
         return "index";

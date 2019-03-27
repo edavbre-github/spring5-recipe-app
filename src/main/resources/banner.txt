@@ -1,0 +1,20 @@
+
+                                dddddddd                                       bbbbbbbb
+                                d::::::d                                       b::::::b
+                                d::::::d                                       b::::::b
+                                d::::::d                                       b::::::b
+                                d:::::d                                         b:::::b
+    eeeeeeeeeeee        ddddddddd:::::d   aaaaaaaaaaaaavvvvvvv           vvvvvvvb:::::bbbbbbbbb    rrrrr   rrrrrrrrr       eeeeeeeeeeee
+  ee::::::::::::ee    dd::::::::::::::d   a::::::::::::av:::::v         v:::::v b::::::::::::::bb  r::::rrr:::::::::r    ee::::::::::::ee
+ e::::::eeeee:::::ee d::::::::::::::::d   aaaaaaaaa:::::av:::::v       v:::::v  b::::::::::::::::b r:::::::::::::::::r  e::::::eeeee:::::ee
+e::::::e     e:::::ed:::::::ddddd:::::d            a::::a v:::::v     v:::::v   b:::::bbbbb:::::::brr::::::rrrrr::::::re::::::e     e:::::e
+e:::::::eeeee::::::ed::::::d    d:::::d     aaaaaaa:::::a  v:::::v   v:::::v    b:::::b    b::::::b r:::::r     r:::::re:::::::eeeee::::::e
+e:::::::::::::::::e d:::::d     d:::::d   aa::::::::::::a   v:::::v v:::::v     b:::::b     b:::::b r:::::r     rrrrrrre:::::::::::::::::e
+e::::::eeeeeeeeeee  d:::::d     d:::::d  a::::aaaa::::::a    v:::::v:::::v      b:::::b     b:::::b r:::::r            e::::::eeeeeeeeeee
+e:::::::e           d:::::d     d:::::d a::::a    a:::::a     v:::::::::v       b:::::b     b:::::b r:::::r            e:::::::e
+e::::::::e          d::::::ddddd::::::dda::::a    a:::::a      v:::::::v        b:::::bbbbbb::::::b r:::::r            e::::::::e
+ e::::::::eeeeeeee   d:::::::::::::::::da:::::aaaa::::::a       v:::::v         b::::::::::::::::b  r:::::r             e::::::::eeeeeeee
+  ee:::::::::::::e    d:::::::::ddd::::d a::::::::::aa:::a       v:::v          b:::::::::::::::b   r:::::r              ee:::::::::::::e
+    eeeeeeeeeeeeee     ddddddddd   ddddd  aaaaaaaaaa  aaaa        vvv           bbbbbbbbbbbbbbbb    rrrrrrr                eeeeeeeeeeeeee
+
+ 
