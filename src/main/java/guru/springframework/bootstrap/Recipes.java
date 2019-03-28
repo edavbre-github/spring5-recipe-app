@@ -78,10 +78,11 @@ public class Recipes implements ApplicationListener<ContextRefreshedEvent> {
                 "The simplest version of guacamole is just mashed avocados with salt. Don't let the lack of availability of other ingredients stop you from making guacamole.\n" +
                 "To extend a limited supply of avocados, add either sour cream or cottage cheese to your guacamole dip. Purists may be horrified, but so what? It tastes great.\n" +
                 "For a deviled egg version with guacamole, try our Guacamole Deviled Eggs!");
+        // Needed for the bidirectional relationship
         guacNotes.setRecipe(guacRecipe);
         guacRecipe.setNotes(guacNotes);
 
-        // Set the ingredients
+        // Set the ingredients - pretty redundant code, could do with a helper method
         guacRecipe.getIngredients().add(new Ingredient("Ripe Avocados", new BigDecimal(2), eachUnitOfMeasure, guacRecipe));
         guacRecipe.getIngredients().add(new Ingredient("Kosher Salt", new BigDecimal(0.5), teaspoonUnitOfMeasure, guacRecipe));
         guacRecipe.getIngredients().add(new Ingredient("Fresh Lime juice or Lemon juice", new BigDecimal(1), tablespoonUnitOfMeasure, guacRecipe));
@@ -124,10 +125,11 @@ public class Recipes implements ApplicationListener<ContextRefreshedEvent> {
                 "You can also use this time to prepare the taco toppings.\n" +
                 "Grill the chicken, then let it rest while you warm the tortillas. " +
                 "Now you are ready to assemble the tacos and dig in. The whole meal comes together in about 30 minutes!\n");
+        // Needed for the bidirectional relationship
         tacoNotes.setRecipe(tacosRecipe);
         tacosRecipe.setNotes(tacoNotes);
 
-        // Ingredients...
+        // Set the ingredients - pretty redundant code, could do with a helper method
         tacosRecipe.getIngredients().add(new Ingredient("Ancho Chili Powder", new BigDecimal(2), tablespoonUnitOfMeasure, tacosRecipe));
         tacosRecipe.getIngredients().add(new Ingredient("Dried Oregano", new BigDecimal(1), teaspoonUnitOfMeasure, tacosRecipe));
         tacosRecipe.getIngredients().add(new Ingredient("Dried Cumin", new BigDecimal(1), teaspoonUnitOfMeasure, tacosRecipe));
