@@ -4,10 +4,12 @@ import guru.springframework.domain.*;
 import guru.springframework.repositories.CategoryRepository;
 import guru.springframework.repositories.RecipeRepository;
 import guru.springframework.repositories.UnitOfMeasureRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +21,7 @@ import java.util.Optional;
  * @author edavbre
  */
 @Component
+@Slf4j
 public class Recipes implements ApplicationListener<ContextRefreshedEvent> {
     private final CategoryRepository categoryRepository;
     private final RecipeRepository recipeRepository;
@@ -30,9 +33,18 @@ public class Recipes implements ApplicationListener<ContextRefreshedEvent> {
         this.unitOfMeasureRepository = unitOfMeasureRepository;
     }
 
+    /**
+     * Note: The @Transactional annotation is needed to prevent Hibernate Lazy Init failures.
+     * Mr Thompson states that he hasn't figured out why this happens, and that it's intermittent.
+     *
+     * @param contextRefreshedEvent
+     */
     @Override
+    @Transactional
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
+        log.info("Loading Recipe bootstrap data");
         recipeRepository.saveAll(getRecipes());
+        log.info("Finished loading Recipe bootstrap data");
     }
 
     /**

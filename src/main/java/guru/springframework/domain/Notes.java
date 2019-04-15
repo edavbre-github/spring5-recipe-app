@@ -1,13 +1,21 @@
 package guru.springframework.domain;
 
+import lombok.*;
+
 import javax.persistence.*;
 
 /**
  * Created by David Brennan, 19/03/2019, 18:23
  *
+ * As of 10/04/2019, Lombokising this class DOES work unlike the Category class. I have no idea why!!
+ * Update 15/04/2019, Using the @EqualsAndHashCode(exclude={"recipe"}) seems to have fixed the problem.
+ * Without this, HashCode gets into some sort of circular loop and stack overflow!!
+ *
  * @author edavbre
  */
 @Entity
+@Data
+@EqualsAndHashCode(exclude={"recipe"})
 public class Notes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,28 +26,4 @@ public class Notes {
 
     @Lob
     private String recipeNotes;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Recipe getRecipe() {
-        return recipe;
-    }
-
-    public void setRecipe(Recipe recipe) {
-        this.recipe = recipe;
-    }
-
-    public String getRecipeNotes() {
-        return recipeNotes;
-    }
-
-    public void setRecipeNotes(String recipeNotes) {
-        this.recipeNotes = recipeNotes;
-    }
 }
