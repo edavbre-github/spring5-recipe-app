@@ -8,6 +8,8 @@ import java.util.Optional;
 /**
  * Created by David Brennan, 21/03/2019, 18:07
  *
+ * Note that the findById method comes from CrudRepository
+ *
  * @author edavbre
  */
 public interface RecipeRepository extends CrudRepository<Recipe, Long> {
