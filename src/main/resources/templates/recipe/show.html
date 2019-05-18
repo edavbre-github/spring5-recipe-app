@@ -3,7 +3,8 @@
 
 <!-- There would have been way too much typing involved here for me to create this from scratch
      and Thymeleaf is not really part of the Spring Framework course course anyway, so I copied
-     it directly from GitHub -->
+     it directly from GitHub:
+     https://github.com/springframeworkguru/spring5-recipe-app/blob/create-new-recipe/src/main/resources/templates/recipe/show.html -->
 
 <head>
     <meta charset="UTF-8"/>
@@ -22,6 +23,9 @@
             crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
 </head>
 <body>
+<!--/*@thymesVar id="recipe" type="guru.springframework.domain.Recipe"*/-->
+<!--/*@thymesVar id="category" type="guru.springframework.domain.Category"*/-->
+<!--/*@thymesVar id="ingredient" type="guru.springframework.domain.Ingredient"*/-->
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
@@ -36,7 +40,6 @@
                                 <h5>Categories:</h5>
                             </div>
                             <div class="col-md-9">
-                                <!--/*@thymesVar id="category" type="guru.springframework.domain.Category"*/-->
                                 <ul th:each="category : ${recipe.categories}">
                                     <li th:text="${category.description}">cat one</li>
                                     <li th:remove="all">cat two</li>
@@ -95,7 +98,6 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <!--/*@thymesVar id="ingredient" type="guru.springframework.domain.Ingredient"*/-->
                                 <ul th:each="ingredient : ${recipe.ingredients}">
                                     <li th:text="${ingredient.description} + ', ' + ${ingredient.amount} + ' ' + ${ingredient.uom.description}">1 Cup of milk</li>
                                     <li th:remove="all">2 Teaspoon of chocolate</li>
