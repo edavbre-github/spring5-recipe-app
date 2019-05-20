@@ -67,7 +67,40 @@ public class RecipeServiceImplTest {
     }
 
     @Test
+    public void getRecipeCommandByIdTest() {
+        Recipe recipe = new Recipe();
+        recipe.setId(1L);
+        Optional<Recipe> optionalRecipe = Optional.of(recipe);
+
+        when(recipeRepository.findById(anyLong())).thenReturn(optionalRecipe);
+
+        RecipeCommand recipeCommand = new RecipeCommand();
+        recipeCommand.setId(1L);
+
+        when(recipeToRecipeCommand.convert(any())).thenReturn(recipeCommand);
+
+        RecipeCommand commandById = recipeService.findCommandById(1L);
+        assertNotNull("Null recipe returned", commandById);
+        verify(recipeRepository, times(1)).findById(anyLong());
+        verify(recipeRepository, never()).findAll();
+        assertEquals(recipeCommand.getId(), commandById.getId());
+    }
+
+    @Test
     @Ignore
     public void saveRecipeCommand() {
+    }
+
+    @Test
+    public void deleteRecipeById() {
+        // Given
+        Long idToDelete = 2L;
+
+        // When
+        recipeService.deleteById(idToDelete);
+        // No need for a "when(.....)" as the method has a void return type
+
+        // Then
+        verify(recipeRepository, times(1)).deleteById(anyLong());
     }
 }
