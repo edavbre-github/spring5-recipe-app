@@ -4,7 +4,8 @@
 <!-- There would have been way too much typing involved here for me to create this from scratch
      and Thymeleaf is not really part of the Spring Framework course course anyway, so I copied
      it directly from GitHub:
-     https://github.com/springframeworkguru/spring5-recipe-app/blob/create-new-recipe/src/main/resources/templates/recipe/show.html -->
+     https://github.com/springframeworkguru/spring5-recipe-app/blob/create-new-recipe/src/main/resources/templates/recipe/show.html
+-->
 
 <head>
     <meta charset="UTF-8"/>
@@ -94,6 +95,10 @@
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h1 class="panel-title" >Ingredients</h1>
+                    </div>
+                    <!-- This is what appears in the code on GitHub but, whilst it works, the button will be in the wrong place!! -->
+                    <div class="col-md-1">
+                        <a class="btn btn-default" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredients'}" role="button">View</a>
                     </div>
                     <div class="panel-body">
                         <div class="row">
