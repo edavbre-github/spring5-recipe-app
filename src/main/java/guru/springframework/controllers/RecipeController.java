@@ -30,7 +30,7 @@ public class RecipeController {
     }
 
     @GetMapping
-    @RequestMapping("recipe/new")
+    @RequestMapping("/recipe/new")
     public String newRecipe(Model model) {
         model.addAttribute("recipe", new RecipeCommand());
         return "recipe/recipeform";
@@ -57,5 +57,4 @@ public class RecipeController {
         recipeService.deleteById(Long.valueOf(id));
         return "redirect:/";
     }
-
 }
