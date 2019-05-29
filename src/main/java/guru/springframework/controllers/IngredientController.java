@@ -1,6 +1,8 @@
 package guru.springframework.controllers;
 
 import guru.springframework.commands.IngredientCommand;
+import guru.springframework.commands.RecipeCommand;
+import guru.springframework.commands.UnitOfMeasureCommand;
 import guru.springframework.services.IngredientService;
 import guru.springframework.services.RecipeService;
 import guru.springframework.services.UomService;
@@ -48,6 +50,32 @@ public class IngredientController {
         model.addAttribute("ingredient", ingredientService.findByRecipeIdAndIngredientId(Long.valueOf(recipeId), Long.valueOf(id)));
 
         return "recipe/ingredient/show";
+    }
+
+    /**
+     * Mr T calls this method newRecipe which I don't like (was possibly a cut and paste error).
+     * Anyway, as it's supposed to be for creating a new ingredient, I'm calling it newRecipeIngredient.
+     *
+     * @param recipeId
+     * @param model
+     * @return
+     */
+    @GetMapping
+    @RequestMapping("/recipe/{recipeId}/ingredient/new")
+    public String newRecipeIngredient(@PathVariable String recipeId, Model model) {
+        log.debug("Create a new ingredient for recipe ID: {}", recipeId);
+        // TODO - should throw exception if no recipe is found
+        RecipeCommand recipeCommand = recipeService.findCommandById(Long.valueOf(recipeId));
+
+        // Need to return back the parent recipe id for hidden form property
+        IngredientCommand ingredientCommand = new IngredientCommand();
+        ingredientCommand.setRecipeId(Long.valueOf(recipeId));
+        model.addAttribute("ingredient", ingredientCommand);
+        // Init the uom
+        ingredientCommand.setUom(new UnitOfMeasureCommand());
+        model.addAttribute("uomList", uomService.listAllUoms());
+
+        return "recipe/ingredient/ingredientform";
     }
 
     @GetMapping

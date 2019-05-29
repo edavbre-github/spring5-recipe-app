@@ -86,9 +86,31 @@ public class RecipeServiceImplTest {
         assertEquals(recipeCommand.getId(), commandById.getId());
     }
 
+    /**
+     * TODO - Complete the test
+     *
+     * This test is not implemented by Mr T so I'm on me own here. And I can't get it to work, hence ignored for now.
+     */
     @Test
     @Ignore
     public void saveRecipeCommand() {
+        // Given
+        RecipeCommand command = new RecipeCommand();
+        command.setId(1L);
+        Optional<Recipe> optionalRecipe = Optional.of(new Recipe());
+        Recipe savedRecipe = new Recipe();
+        savedRecipe.setId(1L);
+
+        when(recipeRepository.findById(anyLong())).thenReturn(optionalRecipe);
+        when(recipeRepository.save(any())).thenReturn(savedRecipe);
+
+        // When
+        RecipeCommand savedRecipeCommand = recipeService.saveRecipeCommand(command);
+
+        // Then
+        verify(recipeRepository, times(1)).save(any());
+        // TODO - Bugger, I get a null pointer here. Why?
+        assertEquals(savedRecipe.getId(), savedRecipeCommand.getId());
     }
 
     @Test
