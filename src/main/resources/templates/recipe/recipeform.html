@@ -29,6 +29,7 @@
         <div class="col-md-6 col-md-offset-3">
             <!-- In the course video, it's stated that this line configures the form for a POST
              and method="post" is not shown, yet it's in the code on GitHub -->
+            <!-- Hah, this subsequently comes up in lesson 214 that the post is actually needed!!! -->
             <form  th:object="${recipe}" th:action="@{/recipe/}"  method="post">
                 <input type="hidden" th:field="*{id}"/>
                 <div class="panel-group">
@@ -73,7 +74,13 @@
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>Difficulty:</label>
-                                    <select class="form-control">
+                                    <select class="form-control" th:field="*{difficulty}">
+                                        <option th:each="difficultyValue : ${T(guru.springframework.domain.Difficulty).values()}"
+                                                th:value="${difficultyValue.name()}"
+                                                th:text="${difficultyValue.name()}">val
+                                        </option>
+                                    </select>
+                                    <select class="form-control" th:remove="all">
                                         <option>Easy</option>
                                         <option>Medium</option>
                                         <option>Hard</option>

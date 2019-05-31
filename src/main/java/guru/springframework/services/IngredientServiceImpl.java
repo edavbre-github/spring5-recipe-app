@@ -119,6 +119,10 @@ public class IngredientServiceImpl implements IngredientService {
      * successfully deleted from a recipe and tests all passed, but Mr T's code is rather more
      * complicated and can be seen below.
      *
+     * Actually, I don't think Mr T's code is correct. All he's doing is nulling the recipe id in
+     * the ingredient entry, but the ingredient is not actually being deleted. This is resulting
+     * in "leaked" ingredient entries.
+     *
      * @param idToDelete
      */
      @Override
@@ -144,6 +148,7 @@ public class IngredientServiceImpl implements IngredientService {
         }
 
         Ingredient ingredientToDelete = optIngredient.get();
+        // See notes in deleteById(Long)
         ingredientToDelete.setRecipe(null);
         recipe.getIngredients().remove(ingredientToDelete);
         recipeRepository.save(recipe);
