@@ -33,8 +33,18 @@
             <div class="panel-group">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h1 class="panel-title" th:text="${recipe.description}">Recipe Description Here!</h1>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h1 class="panel-title" th:text="${recipe.description}">Recipe Description Here!</h1>
+                            </div>
+
+                            <div class="col-md-1">
+                                <a class="btn btn-default" href="#"
+                                   th:href="@{'/recipe/' + ${recipe.id} + '/image'}" role="button">Change Image</a>
+                            </div>
+                        </div>
                     </div>
+
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-3">
@@ -92,13 +102,19 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- This is the ingredients panel -->
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h1 class="panel-title" >Ingredients</h1>
-                    </div>
+                        <div class="row">
+                            <div class="col-md-11">
+                                <h1 class="panel-title" >Ingredients</h1>
+                            </div>
                     <!-- This is what appears in the code on GitHub but, whilst it works, the button will be in the wrong place!! -->
-                    <div class="col-md-1">
-                        <a class="btn btn-default" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredients'}" role="button">View</a>
+                            <div class="col-md-1">
+                                <a class="btn btn-default" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredients'}" role="button">View</a>
+                            </div>
+                        </div>
                     </div>
                     <div class="panel-body">
                         <div class="row">
