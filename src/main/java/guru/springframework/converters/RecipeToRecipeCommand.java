@@ -40,6 +40,7 @@ public class RecipeToRecipeCommand implements Converter<Recipe, RecipeCommand> {
         command.setDirections(source.getDirections());
         command.setDifficulty(source.getDifficulty());
         command.setNotes(notesConverter.convert(source.getNotes()));
+        command.setImage(source.getImage());
 
         if (source.getCategories() != null && source.getCategories().size() > 0) {
             // TODO - Should the following be .forEach(category... or .forEach((Category category)...
