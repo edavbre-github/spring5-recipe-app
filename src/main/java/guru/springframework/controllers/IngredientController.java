@@ -22,7 +22,7 @@ public class IngredientController {
 
     private final RecipeService recipeService;
     private final IngredientService ingredientService;
-    private UomService uomService;
+    private final UomService uomService;
 
     public IngredientController(IngredientService ingredientService, RecipeService recipeService, UomService uomService) {
         this.recipeService = recipeService;

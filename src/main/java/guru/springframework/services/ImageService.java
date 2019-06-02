@@ -8,5 +8,5 @@ import org.springframework.web.multipart.MultipartFile;
  * @author EDAVBRE
  */
 public interface ImageService{
-    public void saveImageFile(Long recipeId, MultipartFile image);
+    void saveImageFile(Long recipeId, MultipartFile image);
 }
