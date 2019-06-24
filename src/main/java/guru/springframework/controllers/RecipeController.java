@@ -4,6 +4,7 @@ import guru.springframework.commands.RecipeCommand;
 import guru.springframework.exceptions.NotFoundException;
 import guru.springframework.services.RecipeService;
 import lombok.extern.slf4j.Slf4j;
+import net.bytebuddy.asm.Advice;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -59,10 +60,15 @@ public class RecipeController {
 
     @ResponseStatus(HttpStatus.NOT_FOUND) // Need this otherwise a status 200 would be returned (despite the exception being so annotated!)
     @ExceptionHandler(NotFoundException.class)
-    public ModelAndView handleNotFound() {
+    public ModelAndView handleNotFound(Exception e) {
         log.error("Handling a Not Found Exception");
+        log.error(e.getMessage());
+
         ModelAndView modelAndView = new ModelAndView();
+
         modelAndView.setViewName("404error");
+        modelAndView.addObject("exception", e);
+
         return modelAndView;
     }
 }
