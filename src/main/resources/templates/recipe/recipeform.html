@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!-- There would have been way too much typing involved here for me to create this from scratch
+     and Thymeleaf is not really part of the Spring Framework course course anyway, so I copied
+     it directly from GitHub:
+     https://github.com/springframeworkguru/spring5-recipe-app/blob/create-new-recipe/src/main/resources/templates/recipe/recipeform.html -->
+
 <head>
     <meta charset="UTF-8"/>
     <title>Recipe Form</title>
@@ -21,6 +27,9 @@
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
+            <!-- In the course video, it's stated that this line configures the form for a POST
+             and method="post" is not shown, yet it's in the code on GitHub -->
+            <!-- Hah, this subsequently comes up in lesson 214 that the post is actually needed!!! -->
             <form th:object="${recipe}" th:action="@{/recipe/}" method="post">
 
                 <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
