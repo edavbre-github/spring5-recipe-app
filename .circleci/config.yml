@@ -29,7 +29,7 @@ jobs: # a collection of steps
           # key: circleci-demo-java-spring-{{ checksum "pom.xml" }}
           key: spring5-recipe-app-{{ checksum "pom.xml" }}
 
-      - run: mvn package # run the actual tests
+      - run: mvn package cobertura:cobertura # run the actual tests
 
       - store_test_results: # uploads the test metadata from the `target/surefire-reports` directory so that it can show up in the CircleCI dashboard. 
           # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
@@ -39,3 +39,6 @@ jobs: # a collection of steps
           # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
           path: target/spring5-recipe-app-0.0.1-SNAPSHOT.jar
       # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
+      - run:
+          name: Send to CodeCov
+          command: bash <(curl -s https://codecov.io/bash)
