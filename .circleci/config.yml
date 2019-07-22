@@ -7,6 +7,11 @@ jobs: # a collection of steps
     docker: # run the steps with Docker
       - image: circleci/openjdk:11-jdk-browsers # ...with this image as the primary container; this is where all `steps` will run
 
+    environment:
+      # Customize the JVM max heap limit
+      # Dunno about setting it this high - this is what JT uses in the Pet Clinic project
+      MAVEN_OPTS: -Xmx3200m
+
     steps: # a collection of executable commands
 
       - checkout # check out source code to working directory
