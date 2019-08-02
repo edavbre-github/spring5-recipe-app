@@ -31,9 +31,9 @@ jobs: # a collection of steps
           # key: circleci-demo-java-spring-{{ checksum "pom.xml" }}
           key: spring5-recipe-app-{{ checksum "pom.xml" }}
 
-      - run: mvn package cobertura:cobertura # run the actual tests
+      - run: mvn package # cobertura:cobertura # run the actual tests - as of 02/08/2019, Cobertura does not execute properly
 
-      - store_test_results: # uploads the test metadata from the `target/surefire-reports` directory so that it can show up in the CircleCI dashboard. 
+      - store_test_results: # uploads the test metadata from the `target/surefire-reports` directory so that it can show up in the CircleCI dashboard.
           # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: target/surefire-reports
 
