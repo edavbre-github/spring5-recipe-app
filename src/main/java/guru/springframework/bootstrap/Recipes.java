@@ -6,6 +6,7 @@ import guru.springframework.repositories.RecipeRepository;
 import guru.springframework.repositories.UnitOfMeasureRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
@@ -18,10 +19,14 @@ import java.util.Optional;
 /**
  * Created by David Brennan, 26/03/2019, 18:11
  *
+ * Modified 29/07/2019 so that it's run for the "default" profile only (to populate H2).
+ * I don't want this to be run every time we start against the dev or prod MySQL DBs.
+ *
  * @author edavbre
  */
 @Component
 @Slf4j
+@Profile("default")
 public class Recipes implements ApplicationListener<ContextRefreshedEvent> {
     private final CategoryRepository categoryRepository;
     private final RecipeRepository recipeRepository;
@@ -53,7 +58,7 @@ public class Recipes implements ApplicationListener<ContextRefreshedEvent> {
      * Bug found 13/5/2019 - Ingredient to Recipe link was not being set up => Recipe ingredients were not being found/displayed.
      * Fixed by using Ingredient constructor that takes the Recipe as well
      *
-     * @return
+     * @return a List of preconfigured Recipe objects
      */
     private List<Recipe> getRecipes() {
         List<Recipe> recipes = new ArrayList<>(2);

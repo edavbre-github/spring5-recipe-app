@@ -67,6 +67,12 @@
             <artifactId>bootstrap</artifactId>
             <version>3.3.7-1</version>
         </dependency>
+
+        <!-- MySQL driver. Version deliberately not specified! -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
     </dependencies>
 
 	<build>
